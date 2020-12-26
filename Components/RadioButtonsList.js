@@ -13,12 +13,15 @@ const RadioButtonsList = (props)=>{
             : { ...clikedItem, selected: false }
         );
         setisSelected(updatedState);
+        console.log("updatedstate:", updatedState)
+        console.log("isSelected", isSelected);
+        updatedState.map(item=>{item.selected===true?props.newItem.Notification=item.value+"  "+item.reminder:""});
+        console.log("Reminderul este:",props.newItem.Notification );
       
       };
     return (<View>
         
-        {isSelected.map(item=> <View style={{flexDirection:"row"}} key={item.id}><TouchableOpacity style={styles.radioButtonStyle} onPress={()=>{onRadioBtnClick(item);   isSelected.map(item=>{item.selected===true?props.newItem.Notification=item.value+"  "+item.reminder:""});
-        console.log("Reminderul este:",props.newItem.Notification );}}>{item.selected===true?<View style={styles.selectedItemStyle}/>:null}</TouchableOpacity><Text style={styles.textStyle}>{item.value} {item.reminder}</Text></View>)}
+        {isSelected.map(item=> <View style={{flexDirection:"row"}} key={item.id}><TouchableOpacity style={styles.radioButtonStyle} onPress={()=>{onRadioBtnClick(item)}}>{item.selected===true?<View style={styles.selectedItemStyle}/>:null}</TouchableOpacity><Text style={styles.textStyle}>{item.value} {item.reminder}</Text></View>)}
             </View>)
 };
 

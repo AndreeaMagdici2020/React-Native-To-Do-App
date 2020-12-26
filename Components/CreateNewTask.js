@@ -6,6 +6,8 @@ import Calendar from "../Components/Calendar.js";
 import AsyncStorage from '@react-native-community/async-storage';
 import TaskPriority from "./TaskPriority.js";
 import AddNotification from "./AddNotification.js";
+import TaskDescription from "./TaskDescription.js";
+import AddCategory from "./AddCategory.js";
 
 
 const  CreateNewTask =(props)=>{
@@ -54,15 +56,11 @@ const addNewTask=(newTask)=>{
 
 return(<ScrollView style={{backgroundColor:"white"}}>
         <View>
-            <View style={styles.taskImportance}>
-                <Text style={{color:"black", fontWeight:"normal", fontSize:16, marginTop:40, marginLeft:120}}>Select task priority</Text>
-                {/* <TouchableOpacity onPress={onPress}><Image source={require('./../assets/greyStar.png')} style={styles.starStyle}/></TouchableOpacity> */}
-                <TaskPriority newItem={newTask}/>
-            </View>
+
             <View style={styles.taskDetailes}> 
            <View style={{flexDirection:'row', flexWrap:'wrap'}}> 
             <TextInput
-            style={{ height: 40, borderColor: '#123456', borderBottomWidth: 1, fontSize:20, backgroundColor:"white", width:300,marginTop:5, marginLeft:5 }}
+            style={{ height: 40, borderColor: '#123456', borderBottomWidth: 1, fontSize:20, backgroundColor:"white",borderTopLeftRadius:15, width:300,marginTop:5, marginLeft:5, marginBottom:5 }}
             onChangeText={text => {setText(text); console.log("text:", text);}}
             value={text}/>
            </View>
@@ -72,13 +70,20 @@ return(<ScrollView style={{backgroundColor:"white"}}>
                 <AddNotification newItem={newTask}/>
                 <Text style={{marginRight:130, fontSize:18, marginTop:50}}>Add notification</Text>
             </View>
-
-  {/* {props.route.params.items.push(newTask);console.log("noul aray:", props.route.params.items)}          */}
-             <Button title="Save" color="#123456"  onPress={() =>{  (async function(){
+            <View style={styles.taskImportance}>
+                <Text style={{color:"navy", fontWeight:"bold", fontSize:15.7, marginTop:30, marginLeft:5, marginRight:120}}>Select task priority</Text>
+               
+                <TaskPriority newItem={newTask}/>
+            </View>
+            <TaskDescription newItem={newTask}/>
+            <AddCategory/>
+            <View style={{flexDirection:"row"}}>
+                <TouchableOpacity style={styles.saveButton} onPress={() =>{  (async function(){
                await removeItemValue('@NewItemsList');
-             })();addNewTask(newTask); console.log(props.route.params.items);props.navigation.navigate("Today", {items:props.route.params.items});console.log("hello"); }}/>
-
+             })();addNewTask(newTask); console.log(props.route.params.items);props.navigation.navigate("Today", {items:props.route.params.items});console.log("hello"); }}><Text style={{color:"white", fontSize:20}}>Save</Text></TouchableOpacity>
            
+           <TouchableOpacity style={styles.cancelButton} onPress={()=>{props.navigation.navigate("Today")}}><Text style={{color:"#123456", fontSize:20,}}>Cancel</Text></TouchableOpacity>
+           </View>
 
              </View>
     
@@ -91,15 +96,15 @@ export default CreateNewTask;
 
 const styles=StyleSheet.create({
     taskDetailes:{
-        backgroundColor:"#c8e4ff",
-        height:550,
+        backgroundColor:"white",
+        height:645,
         borderTopLeftRadius:30,
         borderTopRightRadius:30,
+        marginTop:5,
     },
     taskImportance:{
         backgroundColor:"white",
-        height:90,
-        marginBottom:10,
+        height:80,
         flexDirection:'row', flexWrap:'wrap',
         justifyContent:'flex-end',
     }, 
@@ -111,4 +116,33 @@ const styles=StyleSheet.create({
         height:50,
         width:50,
     },
+    saveButton:{
+        height:40, 
+        width:"49%",
+        backgroundColor:"#123456",
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop:30,
+        marginLeft:"0.7%",
+        borderStyle:"solid",
+        borderWidth:1,
+        borderColor:"black",
+        borderRadius:5,
+    },
+    cancelButton:{
+        height:40, 
+        width:"49%",
+        backgroundColor:"white",
+        flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',
+        marginTop:30,
+        marginLeft:"0.5%",
+        borderStyle:"solid",
+        borderWidth:1,
+        borderColor:"#123456",
+        borderRadius:5,
+    },
+  
 });

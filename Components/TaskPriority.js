@@ -39,9 +39,9 @@ const TaskPriority = (props) => {
               </View>
               <View style={{flexDirection:"column"}}>
              
-                  <Text style={styles.priorityNameStyle}>High</Text>
-                  <Text style={styles.priorityNameStyle}>Medium</Text>
-                  <Text style={styles.priorityNameStyle}>Low</Text>
+                  <Text style={{fontSize:16,marginLeft:25, marginTop:19}}>High</Text>
+                  <Text style={{fontSize:16,marginLeft:25, marginTop:35}}>Medium</Text>
+                  <Text style={{fontSize:16,marginLeft:25, marginTop:35}}>Low</Text>
                   {/* <Text style={styles.priorityNameStyle}>None</Text> */}
               </View>
               </View>
@@ -76,10 +76,10 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    marginTop: 22
+    marginTop: 10,
   },
   priorityNameStyle:{
-    margin:16,
+
     fontSize:16,
     marginLeft:25,
   },
@@ -100,8 +100,8 @@ const styles = StyleSheet.create({
   },
   openButton: {
     backgroundColor: "white",
-    borderRadius: 20,
-    padding: 10,
+    borderRadius: 5,
+    padding: 12,
     elevation: 2
   },
   textStyle: {
@@ -116,8 +116,8 @@ const styles = StyleSheet.create({
     fontSize:18,
   },
   starStyle:{
-    height:50,
-    width:50,
+    height:40,
+    width:40,
 },
 StyleOnPress:{
   borderColor:"#ff6a80",
@@ -125,13 +125,15 @@ StyleOnPress:{
   borderStyle:"solid",
   borderRadius:5,
   backgroundColor:"#ffe9ec",
-  marginBottom:6,
+  marginBottom:5,
+  padding:5,
 },
 StyleonNotPressed:{
   borderWidth:1,
   borderColor:"#ade6e6",
-  borderRadius:1.5,
+  borderRadius:5,
   marginBottom:6,
+  padding:5,
 },
 StyleOnPressMedium:{
   borderColor:"#ffdf00",
@@ -139,7 +141,8 @@ StyleOnPressMedium:{
   borderStyle:"solid",
   borderRadius:5,
   backgroundColor:"#ffffe0",
-  marginBottom:6,
+  marginBottom:5,
+  padding:5,
 },
 StyleOnPressLow:{
   borderColor:"#4ee44e",
@@ -147,7 +150,8 @@ StyleOnPressLow:{
   borderStyle:"solid",
   borderRadius:5,
   backgroundColor:"#d2f8d2",
-  marginBottom:6,
+  marginBottom:5,
+  padding:5,
 },
 });
 
