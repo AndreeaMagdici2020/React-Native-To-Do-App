@@ -8,6 +8,7 @@ import CreateNewTask from "./Components/CreateNewTask.js";
 import TimePicker from "./Components/Timepicker.js";
 import HomeScreen from "./Components/HomeScreen.js";
 import SignUp from "./Components/SignUp.js";
+import CreateNewCategory from "./Components/CreateNewCategory.js";
 
 
 const Stack = createStackNavigator();
@@ -24,7 +25,6 @@ class App extends React.Component {
         <Stack.Screen name="MainScreen" >
         {props => <MainScreen {...props}  />}
         </Stack.Screen>
-        {/* <Stack.Screen name="Today" component={Today}/> */}
         <Stack.Screen name="Today">
           {props=><Today {...props} />}
         </Stack.Screen>
@@ -33,6 +33,9 @@ class App extends React.Component {
         </Stack.Screen>
         <Stack.Screen name="TimePicker">
           {props=><TimePicker {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="CreateNewCategory">
+          {props=><CreateNewCategory {...props} />}
         </Stack.Screen>
 
       </Stack.Navigator>

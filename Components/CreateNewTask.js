@@ -76,7 +76,7 @@ return(<ScrollView style={{backgroundColor:"white"}}>
                 <TaskPriority newItem={newTask}/>
             </View>
             <TaskDescription newItem={newTask}/>
-            <AddCategory/>
+            <AddCategory newItem={newTask}/>
             <View style={{flexDirection:"row"}}>
                 <TouchableOpacity style={styles.saveButton} onPress={() =>{  (async function(){
                await removeItemValue('@NewItemsList');

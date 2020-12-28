@@ -12,12 +12,12 @@ const Login=(props)=> {
 
   return (
         <View style={styles.container}>
-            <Text style={styles.welcometext}>Welcome back!</Text>
+            <Text style={styles.welcometext}> Welcome back again!</Text>
             <Image style={styles.logo} source={require("./../assets/logoDoto.png")}/>
             <TextInput placeholder={"Email"} value={email} onChangeText={email=>setEmail(email)} style={styles.inputstyle} />
             <TextInput placeholder={"Password"} secureTextEntry={true} value={password} onChangeText={password=>setPassword(password)} style={styles.inputstyle}/>
             <TouchableOpacity style={styles.buttonstyle}><Text style={styles.textstyle}>Login</Text></TouchableOpacity>
-        <   Text>Don't have an account?</Text><TouchableOpacity><Text>SignUp</Text></TouchableOpacity>      
+            <Text>Don't have an account?</Text><TouchableOpacity><Text>SignUp</Text></TouchableOpacity>      
          </View>
   );
 

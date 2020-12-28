@@ -68,8 +68,7 @@ const HomeScreen = ({ navigation })=> {
    
     return (
       <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Text>Login</Text>
-        <Text >Welcome back!</Text>
+        <Text style={{fontSize:20, color:"navy"}}>Welcome back</Text>
         <Image  style={styles.logo} source={require("./../assets/logoDoto.png")}/>
         <TextInput placeholder={"Email"} value={email} onChangeText={email=>setEmail(email)} style={styles.inputstyle} />
         <TextInput placeholder={"Password"} secureTextEntry={true} value={password} onChangeText={password=>setPassword(password)} style={styles.inputstyle}/>
