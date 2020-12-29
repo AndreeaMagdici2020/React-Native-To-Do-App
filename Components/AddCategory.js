@@ -3,7 +3,7 @@ import {Text, View, TouchableOpacity, StyleSheet, Image} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 //navigation prop is not passed in to all components; only screen components receive this prop automatically!I need to use useNavigation() hook!!!
 
-const AddCategory = ()=>{
+const AddCategory = (props)=>{
     const navigation = useNavigation();
  
     return(<View style={styles.container}>
@@ -14,7 +14,7 @@ const AddCategory = ()=>{
                 <TouchableOpacity style={styles.buttonWork}><Text style={styles.text}>Work</Text></TouchableOpacity>
                 <TouchableOpacity style={styles.buttonOther}><Text style={styles.text}>Other</Text></TouchableOpacity>
             </View>
-            <TouchableOpacity style={styles.addbutton} onPress={()=>navigation.navigate('CreateNewCategory')}><Image source={require("./../assets/plusIc.png")} style={styles.image}/><Text>Add category</Text></TouchableOpacity>
+            <TouchableOpacity style={styles.addbutton} onPress={()=>navigation.navigate('CreateNewCategory',{"newItem":props.newItem})}><Image source={require("./../assets/plusIc.png")} style={styles.image}/><Text>Add category</Text></TouchableOpacity>
           </View>)
 }
 export default AddCategory;

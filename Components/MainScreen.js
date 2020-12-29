@@ -2,7 +2,7 @@ import React from "react";
 import {View, ScrollView, Text, StyleSheet, StatusBar, Image, TouchableOpacity, ImageBackground, FlatList} from "react-native";
 import moment from "moment";
 import CarouselView from "../Components/CarouselView.js";
-import useEffect from "react";
+
 
 
 
@@ -15,7 +15,16 @@ class MainScreen extends React.Component{
             items:  [{id:Math.random().toString(36).substr(2, 9),title:"Buy a present for mother", Date:"2020-11-11", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none" },
             {id:Math.random().toString(36).substr(2, 9),title:"Groom the cat", Date:"2020-11-13", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none" },
             {id:Math.random().toString(36).substr(2, 9),title:"Send the report", Date:"2020-11-11", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none"},
-        ],}
+        ],
+            categories:[{id:Math.random().toString(36).substr(2,9), categoryName:"House", backgroundColor:"#b87fed",backgroundImage:"", },
+                        {id:Math.random().toString(36).substr(2,9), categoryName:"Work", backgroundColor:"#629DDA",backgroundImage:"",},
+                        {id:Math.random().toString(36).substr(2,9), categoryName:"Other", backgroundColor:"#ff6500",backgroundImage:"",},  
+                        {id:Math.random().toString(36).substr(2,9), categoryName:"Self development", backgroundColor:"green",backgroundImage:"",},
+                        {id:Math.random().toString(36).substr(2,9), categoryName:"Weding planning", backgroundColor:"pink",backgroundImage:"",}, 
+                        
+        ],
+    
+    }
 
     }
  
@@ -26,6 +35,7 @@ class MainScreen extends React.Component{
             {name:"Categories", image_source:"../assets/categoriesIcon.png"},
         ];
         console.log("state din Mainscreen", this.state.items);
+        console.log("!!!STATE.CATEGORIES", this.state.categories);
 
 //useEffect
 
@@ -55,11 +65,12 @@ class MainScreen extends React.Component{
                     <TouchableOpacity><Text style={styles.categories}>Important</Text></TouchableOpacity>
                 </View>
                 <View  style={styles.listItem}> 
-                    <Image style={{height:60, width:60, marginLeft:15, marginTop:7}} source={require("../assets/categoriesIcon.png")}/>
-                    <TouchableOpacity><Text style={styles.categories}>Categories</Text></TouchableOpacity>
+                <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Categories",{categories:this.state.categories})}}><Image style={{height:60, width:60, marginLeft:15, marginTop:7}} source={require("../assets/categoriesIcon.png")}/>
+                </TouchableOpacity>
+                   <Text style={styles.categories}>Categories</Text>
                 </View>
                 <View style={{flexDirection:"row"}}>
-                    <Image style={{height:25, width:25, marginLeft:30, marginTop:10}} source={require("../assets/plus.png")}/>
+                    <TouchableOpacity onPress={()=>{this.props.navigation.navigate("CreateNewCategory",{categories:this.state.categories})}}><Image style={{height:25, width:25, marginLeft:30, marginTop:10}} source={require("../assets/plus.png")}/></TouchableOpacity>
                     <Text style={{fontSize:20, marginTop:10, marginLeft: 60}}> New Category</Text>
                 </View>
             </View>
@@ -124,5 +135,11 @@ const styles = StyleSheet.create({
       height:80,
       width:80,
       marginLeft:5,
-   }
+   },
+   styleOnBtnPress:{
+       borderColor:"blue",
+       borderStyle:"solid",
+       borderWidth:2.5,
+       borderRadius:50,
+   },
 })

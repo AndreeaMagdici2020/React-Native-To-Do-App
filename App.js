@@ -9,6 +9,7 @@ import TimePicker from "./Components/Timepicker.js";
 import HomeScreen from "./Components/HomeScreen.js";
 import SignUp from "./Components/SignUp.js";
 import CreateNewCategory from "./Components/CreateNewCategory.js";
+import Categories from "./Components/Categories.js";
 
 
 const Stack = createStackNavigator();
@@ -36,6 +37,9 @@ class App extends React.Component {
         </Stack.Screen>
         <Stack.Screen name="CreateNewCategory">
           {props=><CreateNewCategory {...props} />}
+        </Stack.Screen>
+        <Stack.Screen name="Categories">
+          {props=><Categories {...props} />}
         </Stack.Screen>
 
       </Stack.Navigator>
