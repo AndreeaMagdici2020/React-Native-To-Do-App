@@ -16,13 +16,14 @@ class MainScreen extends React.Component{
             {id:Math.random().toString(36).substr(2, 9),title:"Groom the cat", Date:"2020-11-13", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none" },
             {id:Math.random().toString(36).substr(2, 9),title:"Send the report", Date:"2020-11-11", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none"},
         ],
-            categories:[{id:Math.random().toString(36).substr(2,9), categoryName:"House", backgroundColor:"#b87fed",backgroundImage:"", },
-                        {id:Math.random().toString(36).substr(2,9), categoryName:"Work", backgroundColor:"#629DDA",backgroundImage:"",},
-                        {id:Math.random().toString(36).substr(2,9), categoryName:"Other", backgroundColor:"#ff6500",backgroundImage:"",},  
-                        {id:Math.random().toString(36).substr(2,9), categoryName:"Self development", backgroundColor:"green",backgroundImage:"",},
-                        {id:Math.random().toString(36).substr(2,9), categoryName:"Weding planning", backgroundColor:"pink",backgroundImage:"",}, 
+            categories:[{id:Math.random().toString(36).substr(2,9), categoryName:"House", backgroundColor:"#b87fed",image:"", selected:true},
+                        {id:Math.random().toString(36).substr(2,9), categoryName:"Work", backgroundColor:"#629DDA",image:"", selected:false},
+                        {id:Math.random().toString(36).substr(2,9), categoryName:"Other", backgroundColor:"#ff6500",image:"", selected:false},  
+                        {id:Math.random().toString(36).substr(2,9), categoryName:"Self development", backgroundColor:"green",image:"", selected:false},
+                        {id:Math.random().toString(36).substr(2,9), categoryName:"Weding planning", backgroundColor:"pink",image:"",selected:false}, 
                         
         ],
+        
     
     }
 
@@ -70,8 +71,9 @@ class MainScreen extends React.Component{
                    <Text style={styles.categories}>Categories</Text>
                 </View>
                 <View style={{flexDirection:"row"}}>
-                    <TouchableOpacity onPress={()=>{this.props.navigation.navigate("CreateNewCategory",{categories:this.state.categories})}}><Image style={{height:25, width:25, marginLeft:30, marginTop:10}} source={require("../assets/plus.png")}/></TouchableOpacity>
-                    <Text style={{fontSize:20, marginTop:10, marginLeft: 60}}> New Category</Text>
+                    {/* <TouchableOpacity onPress={()=>{this.props.navigation.navigate("CreateNewCategory",{categories:this.state.categories})}}><Image style={{height:25, width:25, marginLeft:30, marginTop:10}} source={require("../assets/plus.png")}/></TouchableOpacity> */}
+                     <TouchableOpacity onPress={()=>{this.props.navigation.navigate("CreateNewTask",{items:this.state.items, categories:this.state.categories})}}><Image style={{height:25, width:25, marginLeft:30, marginTop:10}} source={require("../assets/plus.png")}/></TouchableOpacity>
+                    <Text style={{fontSize:20, marginTop:10, marginLeft: 60}}> Add new task</Text>
                 </View>
             </View>
             </View></ScrollView>)

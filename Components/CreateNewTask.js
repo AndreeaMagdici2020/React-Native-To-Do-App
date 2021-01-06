@@ -8,14 +8,16 @@ import TaskPriority from "./TaskPriority.js";
 import AddNotification from "./AddNotification.js";
 import TaskDescription from "./TaskDescription.js";
 import AddCategory from "./AddCategory.js";
+import { useNavigation } from '@react-navigation/native';
 
 
 const  CreateNewTask =(props)=>{
     let initialDate=new Date();
     let initialDateStr=initialDate.toISOString()
-    const [text, setText] = useState('Insert the Title');//hook for text input
-    let newTask={id:Math.random().toString(36).substr(2, 9),title:text, Date:initialDateStr.slice(0,initialDateStr.indexOf("T")), Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none" };
+    const [text, setText] = useState('');//hook for text input
+    let newTask={id:Math.random().toString(36).substr(2, 9),title:text, Date:initialDateStr.slice(0,initialDateStr.indexOf("T")), Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none", };
     //template object for the new tasks
+    const navigation= useNavigation();
 
      const storeData = async (value) => {
         try {
@@ -62,6 +64,7 @@ return(<ScrollView style={{backgroundColor:"white"}}>
             <TextInput
             style={{ height: 40, borderColor: '#123456', borderBottomWidth: 1, fontSize:20, backgroundColor:"white",borderTopLeftRadius:15, width:300,marginTop:5, marginLeft:5, marginBottom:5 }}
             onChangeText={text => {setText(text); console.log("text:", text);}}
+            placeholder="Insert the Title"
             value={text}/>
            </View>
             <View><Calendar newItem={newTask}/></View>
@@ -73,10 +76,15 @@ return(<ScrollView style={{backgroundColor:"white"}}>
             <View style={styles.taskImportance}>
                 <Text style={{color:"navy", fontWeight:"bold", fontSize:15.7, marginTop:30, marginLeft:5, marginRight:120}}>Select task priority</Text>
                
-                <TaskPriority newItem={newTask}/>
+                {/* <TaskPriority newItem={newTask}/> */}
+                <TouchableOpacity newItem={newTask} style={styles.buttonPriority} onPress={()=>{ navigation.navigate("Priorities",{newTask:newTask});}}> 
+                    <Text style={{color:"white", textAlign:"center"}}>Priority</Text>
+                </TouchableOpacity>
             </View>
             <TaskDescription newItem={newTask}/>
-            <AddCategory newItem={newTask}/>
+            
+            <AddCategory newItem={newTask} categories={props.route.params.categories}/>
+
             <View style={{flexDirection:"row"}}>
                 <TouchableOpacity style={styles.saveButton} onPress={() =>{  (async function(){
                await removeItemValue('@NewItemsList');
@@ -144,5 +152,8 @@ const styles=StyleSheet.create({
         borderColor:"#123456",
         borderRadius:5,
     },
+     buttonPriority:{ backgroundColor:"navy", height:40, width:80, borderRadius:10, marginRight:15, flexDirection: 'column',
+        justifyContent: 'center',
+        alignItems: 'center',},
   
 });

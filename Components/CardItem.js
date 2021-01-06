@@ -15,7 +15,7 @@ const CardItem =(props)=>
 export default CardItem;
 const styles= StyleSheet.create({
 
-  container:{
+  container:{ 
     backgroundColor:"white",
     borderWidth:1,
     borderColor:"#D0D0D0",

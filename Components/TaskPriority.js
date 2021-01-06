@@ -19,7 +19,7 @@ const TaskPriority = (props) => {
   return (
     <View style={styles.centeredView}>
       <Modal
-        animationType="slide"
+        animationType="none"
         transparent={true}
         visible={modalVisible}
         onRequestClose={() => {

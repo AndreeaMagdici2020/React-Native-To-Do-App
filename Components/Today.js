@@ -43,8 +43,7 @@ React.useEffect(() => {
                </View>
               
          <ItemList items={props.route.params.items} storedData={storedData}/>
-                 {/* {props.route.params.items.map(item=><Text key={item.id}>{item.name}</Text>)}  */}
-                 {/* {props.route.params.items.map(item=><CardItem item={item} key={item.id}/>)} */}
+          
                 <TouchableOpacity onPress={() =>props.navigation.navigate("CreateNewTask",{items:props.route.params.items})}><Image source={require("../assets/addIcon.png")} style={styles.addButton}/></TouchableOpacity>
            </ImageBackground>
          

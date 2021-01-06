@@ -1,20 +1,39 @@
-import React from "react";
-import {Text, View, TouchableOpacity, StyleSheet, Image} from "react-native";
+import React, { useState } from "react";
+import {Text, View, TouchableOpacity, StyleSheet, Image, ScrollView} from "react-native";
 import { useNavigation } from '@react-navigation/native';
 //navigation prop is not passed in to all components; only screen components receive this prop automatically!I need to use useNavigation() hook!!!
 
 const AddCategory = (props)=>{
     const navigation = useNavigation();
+    const [selectedCategory,setSelectedCategory]=useState(props.categories);
  
+    const onSelectCategory = (item) => {
+        let updatedState = selectedCategory.map((clikedItem) =>
+        clikedItem.id === item.id
+            ? { ...clikedItem, selected: true }
+            : { ...clikedItem, selected: false }
+        
+        );
+        setSelectedCategory(updatedState);
+      
+        console.log("selectedCategory", selectedCategory);
+        console.log("updatedstate:", updatedState);
+      
+      
+      };
+
+
     return(<View style={styles.container}>
           
             <View style={styles.categoriesContainer}>
                 <Text style={{fontSize:15.6, marginLeft:5, marginTop:10, fontWeight:"bold", color:"navy"}}>Category:</Text>
-                <TouchableOpacity style={styles.buttonHouse}><Text style={styles.text}>House</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.buttonWork}><Text style={styles.text}>Work</Text></TouchableOpacity>
-                <TouchableOpacity style={styles.buttonOther}><Text style={styles.text}>Other</Text></TouchableOpacity>
-            </View>
-            <TouchableOpacity style={styles.addbutton} onPress={()=>navigation.navigate('CreateNewCategory',{"newItem":props.newItem})}><Image source={require("./../assets/plusIc.png")} style={styles.image}/><Text>Add category</Text></TouchableOpacity>
+            
+            <ScrollView horizontal={true}> 
+           {/* {selectedCategory.map(item=><TouchableOpacity key={item.id}style={item.selected===true?[styles.categoryButton,{backgroundColor:item.backgroundColor,borderStyle:"solid", borderWidth:2,borderColor:"navy"}]:[styles.categoryButton,{backgroundColor:item.backgroundColor}]}onPress={()=>{onSelectCategory(item);props.newItem.Category=item.name; console.log("props.newItem.Category", props.newItem.Category)}}><Text style={styles.text}>{item.name}</Text></TouchableOpacity>)} */}
+            {props.categories.map(item=><TouchableOpacity key={item.id} style={styles.categoryButton} onPress={()=>{onSelectCategory(item);props.newItem.Category=item.categoryName; console.log("props.newItem.Category", props.newItem.Category)}}><Text style={{color:"black"}}>{item.categoryName}</Text></TouchableOpacity>)}
+            </ScrollView></View>
+            
+            <TouchableOpacity style={styles.addbutton} onPress={()=>navigation.navigate('CreateNewCategory',{newItem:props.newItem})}><Image source={require("./../assets/plusIc.png")} style={styles.image}/><Text>Add category</Text></TouchableOpacity>
           </View>)
 }
 export default AddCategory;
@@ -42,7 +61,7 @@ const styles=StyleSheet.create({
         alignItems: 'center',
         
     },
-    buttonHouse:{
+    categoryButton:{
         height:40,
         width:80,
         borderStyle:"solid",
@@ -54,7 +73,6 @@ const styles=StyleSheet.create({
         flexDirection: 'column',
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor:"#b87fed",
         shadowColor: "#000066",
         shadowOffset:{
         width: 2,
@@ -65,52 +83,8 @@ const styles=StyleSheet.create({
         elevation: 15,
         
     },
-    buttonWork:{
-        height:40,
-        width:80,
-        borderStyle:"solid",
-        borderWidth:1,
-        borderColor:"#285ED5",
-        borderRadius:15,
-        marginTop:5,
-        marginLeft:10,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor:"#629DDA",
-        shadowColor: "#000066",
-        shadowOffset:{
-        width: 2,
-        height: 4,
-        },
-        shadowOpacity: 0.9,
-        shadowRadius: 13,
-        elevation: 15,
-        
-    },
-    buttonOther:{
-        height:40,
-        width:80,
-        borderStyle:"solid",
-        borderWidth:1,
-        borderColor:"#e65b00",
-        borderRadius:15,
-        marginTop:5,
-        marginLeft:10,
-        flexDirection: 'column',
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor:"#ff6500",
-        shadowColor: "#000066",
-        shadowOffset:{
-        width: 2,
-        height: 4,
-        },
-        shadowOpacity: 0.9,
-        shadowRadius: 13,
-        elevation: 15,
-        
-    },
+    
+   
     addbutton:{  
         height:40,
         width:160,

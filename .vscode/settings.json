@@ -1,0 +1,9 @@
+{
+    "editor.autoClosingBrackets": "always",
+    "editor.autoIndent": "brackets",
+    "eslint.validate": ["javascript"],
+    "editor.codeActionsOnSave": {
+  "source.fixAll.eslint": true
+}
+    
+}

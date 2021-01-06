@@ -1,12 +1,13 @@
 import React from "react";
-import {View, Text,StyleSheet, ScrollView} from "react-native";
+import {View, Text,StyleSheet, ScrollView, TouchableOpacity, Image} from "react-native";
 import CategoriesGrid from "./CategoriesGrid.js";
 
 
 const Categories = (props)=>{
 
     return (<View style={styles.container}>
-                 <CategoriesGrid items={props.route.params.categories}/>
+                   
+                <CategoriesGrid items={props.route.params.categories}/>
             </View>)
 };
 
