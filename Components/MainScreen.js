@@ -14,7 +14,7 @@ class MainScreen extends React.Component{
         this.state = {
             items:  [{id:Math.random().toString(36).substr(2, 9),title:"Buy a present for mother", Date:"2020-11-11", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none" },
             {id:Math.random().toString(36).substr(2, 9),title:"Groom the cat", Date:"2020-11-13", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none" },
-            {id:Math.random().toString(36).substr(2, 9),title:"Send the report", Date:"2020-11-11", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none"},
+            {id:Math.random().toString(36).substr(2, 9),title:"Send the report", Date:"2020-11-11", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"high"},
         ],
             categories:[{id:Math.random().toString(36).substr(2,9), categoryName:"House", backgroundColor:"#b87fed",image:"", selected:true},
                         {id:Math.random().toString(36).substr(2,9), categoryName:"Work", backgroundColor:"#629DDA",image:"", selected:false},
@@ -63,7 +63,7 @@ class MainScreen extends React.Component{
                 </View>
                 <View  style={styles.listItem}>
                     <Image style={styles.image} source={require("../assets/startIcon.png")}/>
-                    <TouchableOpacity><Text style={styles.categories}>Important</Text></TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{this.props.navigation.navigate("ImportantTasks",{items:this.state.items,})}}><Text style={styles.categories}>Important</Text></TouchableOpacity>
                 </View>
                 <View  style={styles.listItem}> 
                 <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Categories",{categories:this.state.categories})}}><Image style={{height:60, width:60, marginLeft:15, marginTop:7}} source={require("../assets/categoriesIcon.png")}/>

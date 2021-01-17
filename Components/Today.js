@@ -43,8 +43,11 @@ React.useEffect(() => {
                </View>
               
          <ItemList items={props.route.params.items} storedData={storedData}/>
-          
-                <TouchableOpacity onPress={() =>props.navigation.navigate("CreateNewTask",{items:props.route.params.items})}><Image source={require("../assets/addIcon.png")} style={styles.addButton}/></TouchableOpacity>
+          <View style={{flexDirection:"row"}}>
+                <TouchableOpacity onPress={()=>props.navigation.navigate("MainScreen")}><Image source={require("./../assets/icons8home.png")} style={styles.homeBtn}/></TouchableOpacity>
+                <TouchableOpacity onPress={() =>props.navigation.navigate("CreateNewTask",{items:props.route.params.items})}><Image source={require("../assets/icons8plus.png")} style={styles.addButton}/></TouchableOpacity>
+                
+           </View>
            </ImageBackground>
          
                </View>)
@@ -64,10 +67,20 @@ const styles= StyleSheet.create({
         marginTop:"10%",
     },
     addButton:{
-        height:50, 
-        width:50,
+        height:40, 
+        width:40,
         marginTop:'10%',
-        marginLeft:'80%',
+        marginLeft:'45%',
         marginBottom:'10%',
-    }
+        opacity: 0.8,
+    },
+    homeBtn:{
+        height:45,
+        width:45,
+        marginTop:'10%',
+        marginLeft:'35%',
+        opacity: 0.8,
+       
+
+    },
 })
