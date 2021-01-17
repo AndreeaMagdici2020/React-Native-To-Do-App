@@ -12,9 +12,9 @@ class MainScreen extends React.Component{
         super(props);
     
         this.state = {
-            items:  [{id:Math.random().toString(36).substr(2, 9),title:"Buy a present for mother", Date:"2020-11-11", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none" },
-            {id:Math.random().toString(36).substr(2, 9),title:"Groom the cat", Date:"2020-11-13", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"none" },
-            {id:Math.random().toString(36).substr(2, 9),title:"Send the report", Date:"2020-11-11", Begin:"", End:"", Notification:"", Description:"", Category:"", TaskPriority:"high"},
+            items:  [{id:Math.random().toString(36).substr(2, 9),title:"Buy a present for mother", Date:"2020-11-11", Begin:"", End:"", Notification:"", Description:"", Category:"House", TaskPriority:"none" },
+            {id:Math.random().toString(36).substr(2, 9),title:"Groom the cat", Date:"2020-11-13", Begin:"", End:"", Notification:"", Description:"", Category:"House", TaskPriority:"none" },
+            {id:Math.random().toString(36).substr(2, 9),title:"Send the report", Date:"2020-11-11", Begin:"", End:"", Notification:"", Description:"", Category:"Other", TaskPriority:"high"},
         ],
             categories:[{id:Math.random().toString(36).substr(2,9), categoryName:"House", backgroundColor:"#b87fed",image:"", selected:true},
                         {id:Math.random().toString(36).substr(2,9), categoryName:"Work", backgroundColor:"#629DDA",image:"", selected:false},
@@ -52,23 +52,30 @@ class MainScreen extends React.Component{
             </View>
 
             <View>
+            <Text style={{marginLeft:20, fontSize:18, color:"#17528D", fontFamily:"Roboto", fontWeight:"bold"}}>Upcoming next week</Text>
             <CarouselView items={this.state.items}/> 
-           {/* <CarouselView items={route.params?.items}/> */}
+       
             </View>
 
             <View style={styles.menu}>
-                <View data={this.state.items} style={styles.listItem}>
+                <View style={styles.listItem}>
                     <Image style={styles.image} source={require("../assets/calendarIcon.png")}/>
                     <TouchableOpacity onPress={() =>this.props.navigation.navigate('Today', {items:this.state.items,})}><Text style={styles.categories}>Today</Text></TouchableOpacity>
                 </View>
+
+                <View  style={styles.listItem}> 
+                <Image style={[styles.image,{height:45, width:45, marginLeft:22, marginTop:5}]} source={require("../assets/icons8list.png")}/>
+                <TouchableOpacity onPress={()=>{this.props.navigation.navigate("ToDos",{items:this.state.items, categories:this.state.categories})}}><Text style={[styles.categories,{marginLeft:'35%'}]}>To Do</Text>
+                </TouchableOpacity>
+                </View>
+
                 <View  style={styles.listItem}>
                     <Image style={styles.image} source={require("../assets/startIcon.png")}/>
                     <TouchableOpacity onPress={()=>{this.props.navigation.navigate("ImportantTasks",{items:this.state.items,})}}><Text style={styles.categories}>Important</Text></TouchableOpacity>
                 </View>
                 <View  style={styles.listItem}> 
-                <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Categories",{categories:this.state.categories})}}><Image style={{height:60, width:60, marginLeft:15, marginTop:7}} source={require("../assets/categoriesIcon.png")}/>
-                </TouchableOpacity>
-                   <Text style={styles.categories}>Categories</Text>
+                <Image style={{height:45, width:45, marginLeft:22, marginTop:7}} source={require("../assets/categoriesIcon.png")}/>
+                <TouchableOpacity onPress={()=>{this.props.navigation.navigate("Categories",{categories:this.state.categories})}}><Text style={styles.categories}>Categories</Text></TouchableOpacity>
                 </View>
                 <View style={{flexDirection:"row"}}>
                     {/* <TouchableOpacity onPress={()=>{this.props.navigation.navigate("CreateNewCategory",{categories:this.state.categories})}}><Image style={{height:25, width:25, marginLeft:30, marginTop:10}} source={require("../assets/plus.png")}/></TouchableOpacity> */}
@@ -104,7 +111,7 @@ const styles = StyleSheet.create({
         flexDirection:"row",
     },
     categories:{
-        fontSize:23,
+        fontSize:20,
         fontWeight:"bold",
         color:"#17528D",
         marginTop:12,
@@ -127,16 +134,16 @@ const styles = StyleSheet.create({
    },
    listItem:{
        backgroundColor:"white",
-       height:80,
+       height:60,
        borderColor:"#E0E0E0",
        borderWidth:1,
        paddingBottom:5,
        flexDirection:"row",
    },
    image:{
-      height:80,
-      width:80,
-      marginLeft:5,
+      height:60,
+      width:60,
+      marginLeft:15,
    },
    styleOnBtnPress:{
        borderColor:"blue",

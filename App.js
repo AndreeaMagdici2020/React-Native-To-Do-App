@@ -12,6 +12,7 @@ import CreateNewCategory from "./Components/CreateNewCategory.js";
 import Categories from "./Components/Categories.js";
 import Priorities from "./Components/Priorities.js";
 import ImportantTasks from "./Components/ImportantTasks.js";
+import ToDos from "./Components/ToDos.js";
 
 
 const Stack = createStackNavigator();
@@ -46,8 +47,11 @@ class App extends React.Component {
          <Stack.Screen name="Priorities">
           {props=><Priorities {...props} />}
         </Stack.Screen>
-            <Stack.Screen name="ImportantTasks">
+          <Stack.Screen name="ImportantTasks">
           {props=><ImportantTasks {...props} />}
+        </Stack.Screen>
+          <Stack.Screen name="ToDos">
+          {props=><ToDos {...props} />}
         </Stack.Screen>
 
       </Stack.Navigator>

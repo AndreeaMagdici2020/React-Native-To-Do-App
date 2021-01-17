@@ -10,8 +10,9 @@ const CarouselView =(props)=>{
 
     return (<View style={styles.container}>
             <ScrollView   horizontal={true}>
-            {props.items.map(item=> <View  key={Math.round(Math.random()*1000000)} style={styles.cardItem}>
-            <ImageBackground  source={require('../assets/bkg2.png')} style={{ flex: 1,resizeMode: "cover", justifyContent: "center"}}>
+        
+            {props.items.map(item=> <View  key={Math.round(Math.random()*1000000)} style={[styles.cardItem,{borderRadius:10, }]}>
+            <ImageBackground  source={require('../assets/bkg2.png')} style={{ flex: 1,resizeMode: "cover", justifyContent: "center",}} imageStyle={{borderRadius: 6}}>
                 <Text style={styles.text}  numberOfLines={2}>{item.title}</Text>
                 <Text style={styles.secondarytext} numberOfLines={1}>{item.Date}</Text>
                </ImageBackground>
@@ -31,7 +32,7 @@ const styles = StyleSheet.create({
         height:160,
         margin:6,
         backgroundColor:"#c6e4ee",
-        borderTopLeftRadius:40,
+        
       
 
     },

@@ -35,15 +35,15 @@ React.useEffect(() => {
 
 
  
-        return (  <View style={{margin:0, height:645}}>
-            <ImageBackground source={require("../assets/beach.png")} style={{ flex: 1,resizeMode: "cover", justifyContent: "center"}}>
-                <View style={{flex: 1, flexDirection: 'row', height:200}}>
+        return (  <View style={{ height:645, }}>
+            <ImageBackground source={require("../assets/beach.png")} style={{ flex: 1,resizeMode: "cover", justifyContent:"space-around"}}>
+                {/* <View style={{flex: 1, flexDirection: 'row', height:200}}>
                         <Text style={{color:"#001a66", fontSize:30, fontWeight:"bold", marginLeft:"7%",  marginTop:"20%"}}>Today</Text> 
                         <Text style={styles.textSecondary}>{moment().format('llll')}</Text>
-               </View>
+               </View> */}
               
          <ItemList items={props.route.params.items} storedData={storedData}/>
-          <View style={{flexDirection:"row"}}>
+          <View style={{flexDirection:"row",}}>
                 <TouchableOpacity onPress={()=>props.navigation.navigate("MainScreen")}><Image source={require("./../assets/icons8home.png")} style={styles.homeBtn}/></TouchableOpacity>
                 <TouchableOpacity onPress={() =>props.navigation.navigate("CreateNewTask",{items:props.route.params.items})}><Image source={require("../assets/icons8plus.png")} style={styles.addButton}/></TouchableOpacity>
                 
@@ -67,16 +67,16 @@ const styles= StyleSheet.create({
         marginTop:"10%",
     },
     addButton:{
-        height:40, 
-        width:40,
+        height:30, 
+        width:30,
         marginTop:'10%',
         marginLeft:'45%',
         marginBottom:'10%',
         opacity: 0.8,
     },
     homeBtn:{
-        height:45,
-        width:45,
+        height:30,
+        width:30,
         marginTop:'10%',
         marginLeft:'35%',
         opacity: 0.8,
