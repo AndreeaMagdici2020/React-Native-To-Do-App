@@ -8,10 +8,8 @@ const CardItem =(props)=>{
   
   const [checked, setChecked]=useState(true);
         return (<View >
-           {/* <Text style={{ textAlign:"center"}}>{props.item.title}</Text>
-           <Text style={{ textAlign:"center"}}>{props.item.Date}</Text>
-           <Text style={{ textAlign:"center"}}>{props.item.Begin}</Text> */}
-           <ListItem  bottomDivider style={{width:330,}}>
+ 
+        <ListItem  bottomDivider style={{width:330,}}>
         <ListItem.Content style={{flexDirection:"row", justifyContent:"flex-start"}}>
         <View style={{maxWidth:"20%",marginRight:10 }}>
         <CheckBox

@@ -12,7 +12,7 @@ const ToDos = (props)=>{
     return (
         <View style={styles.container}>
             
-                <Text>Your to dos</Text>
+                
                 <ExpandedList categories={props.route.params.categories} items={props.route.params.items}/>
                
         </View>

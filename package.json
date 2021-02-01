@@ -8,6 +8,11 @@
     "eject": "expo eject"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.34",
+    "@fortawesome/free-brands-svg-icons": "^5.15.2",
+    "@fortawesome/free-regular-svg-icons": "^5.15.2",
+    "@fortawesome/free-solid-svg-icons": "^5.15.2",
+    "@fortawesome/react-native-fontawesome": "^0.2.6",
     "@react-native-async-storage/async-storage": "^1.13.1",
     "@react-native-community/async-storage": "^1.12.1",
     "@react-native-community/datetimepicker": "3.0.0",
@@ -29,6 +34,7 @@
     "react-native-date-picker": "^3.2.5",
     "react-native-elements": "^3.0.0-alpha.1",
     "react-native-expandable-listview": "^1.3.1",
+    "react-native-fontawesome": "^7.0.0",
     "react-native-gesture-handler": "^1.7.0",
     "react-native-linear-gradient": "^2.5.6",
     "react-native-modal-datetime-picker": "^7.6.1",
@@ -38,6 +44,7 @@
     "react-native-screens": "^2.10.1",
     "react-native-simple-time-picker": "^0.2.0",
     "react-native-super-grid": "^4.0.3",
+    "react-native-svg": "file:node_modules/react-native-svg",
     "react-native-vector-icons": "^7.1.0",
     "react-native-web": "~0.13.12",
     "react-navigation-stack": "file:node_modules/@react-navigation/stack"
